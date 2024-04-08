@@ -6,25 +6,24 @@ int secretNumber = 69;
 void Main()
 {
     Console.WriteLine("Welcome to Guessing Game!!!!!!!!!!!!!!!!");
+    Console.WriteLine("Guess the number between 1 and 100");
 
-    for (int i = 0; i < 4; i++)
+    for (int i = 1; i <= 4; i++)
     {
-        if (PlayGame()) break;
+        int userGuess = GetGuess(i);
+        if (DisplayMessageForSecretNumber(userGuess))
+        {
+            break;
+        }
     }
 }
 
-bool PlayGame()
-{
-    int userGuess = GetGuess();
-    return DisplayMessageForSecretNumber(userGuess);
-}
-
-int GetGuess()
+int GetGuess(int numberOfGuesses)
 {
     int guess = 0;
     while (guess == 0)
     {
-        Console.WriteLine("Please enter a number between 1 and 100");
+        Console.Write($"Guess {numberOfGuesses}: ");
         try
         {
             guess = int.Parse(Console.ReadLine().Trim());
