@@ -1,7 +1,5 @@
-﻿
-
-//write a readline that takes an integer between 1 and 100, if not we prompt again 
-//with a while loop wrap in a function called get guess 
+﻿//write a readline that takes an integer between 1 and 100, if not we prompt again
+//with a while loop wrap in a function called get guess
 
 void Main()
 {
@@ -10,8 +8,7 @@ void Main()
     Console.WriteLine("Welcome to Guessing Game!!!!!!!!!!!!!!!!");
     int userGuess = GetGuess();
 
-    
-
+    DisplayMessageForSecretNumber(secretNumber, userGuess);
 }
 
 int GetGuess()
@@ -23,7 +20,6 @@ int GetGuess()
         try
         {
             guess = int.Parse(Console.ReadLine().Trim());
-
         }
         catch
         {
@@ -36,15 +32,25 @@ int GetGuess()
             Console.WriteLine("BRUH directions....");
             guess = 0;
         }
-
     }
     return guess;
-
 }
 
-void SuccessEvaluation()
+void DisplayMessageForSecretNumber(int secretNumber, int guess)
 {
-    
+    if (secretNumber == guess)
+    {
+        Console.Beep();
+        Console.BackgroundColor = ConsoleColor.Magenta;
+        Console.WriteLine(
+            "you did it! good job! you knew what the number was!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        );
+    }
+    else
+    {
+        Console.BackgroundColor = ConsoleColor.Gray;
+        Console.WriteLine("oh my god how did you not know. you are so dumb");
+    }
 }
 
 Main();
