@@ -5,10 +5,12 @@
 
 void Main()
 {
+    int secretNumber = 69;
+
     Console.WriteLine("Welcome to Guessing Game!!!!!!!!!!!!!!!!");
     int userGuess = GetGuess();
 
-    Console.WriteLine($"You chose {userGuess}");
+    
 
 }
 
@@ -38,6 +40,11 @@ int GetGuess()
     }
     return guess;
 
+}
+
+void SuccessEvaluation()
+{
+    
 }
 
 Main();
