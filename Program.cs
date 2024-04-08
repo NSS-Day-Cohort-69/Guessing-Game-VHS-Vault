@@ -60,12 +60,20 @@ bool DisplayMessageForSecretNumber(int guess)
         );
         return true;
     }
-    else
+    else if(guess > secretNumber)
     {
         Console.BackgroundColor = ConsoleColor.Gray;
-        Console.WriteLine("oh my god how did you not know. you are so dumb");
+        Console.WriteLine("Hey dummy your guess was to high");
         return false;
     }
+    else 
+    {
+        Console.BackgroundColor = ConsoleColor.Gray;
+        Console.WriteLine("Hey dummy your guess was to low");
+        return false;
+    }
+    
+    
 }
 
 Main();
