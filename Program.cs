@@ -12,10 +12,12 @@ void Main()
     secretNumber = random.Next() % 100 + 1;
     Console.WriteLine($"{secretNumber}");
     int maxGuesses = SetDifficultyLevel();
-    for (int i = 1; i <= maxGuesses; i++)
+    for (int i = 1; i != maxGuesses + 1; i++)
     {
         Console.WriteLine(
-            $"You have {maxGuesses - i + 1} {(maxGuesses - i + 1 == 1 ? "guess" : "guesses")} "
+            maxGuesses == -1
+                ? "You have infinite guesses."
+                : $"You have {maxGuesses - i + 1} {(maxGuesses - i + 1 == 1 ? "guess" : "guesses")} "
         );
 
         int userGuess = GetGuess(i);
@@ -93,21 +95,23 @@ int SetDifficultyLevel()
         @"Please enter THE NUMBER that corresponds with your preferred difficulty level:
     1. Easy
     2. Medium
-    3. Hard"
+    3. Hard
+    4. Cheater"
     );
+
     int userChoice = 0;
     int maxGuesses = 0;
     while (userChoice == 0)
     {
         userChoice = GetIntChoice();
-        if (!(userChoice >= 1 && userChoice <= 3))
+        if (!(userChoice >= 1 && userChoice <= 4))
         {
             Console.WriteLine("please choose a valid option");
             userChoice = 0;
         }
     }
 
-    switch(userChoice)
+    switch (userChoice)
     {
         case 1:
             maxGuesses = 8;
@@ -118,8 +122,11 @@ int SetDifficultyLevel()
         case 3:
             maxGuesses = 4;
             break;
+        case 4:
+            maxGuesses = -1;
+            break;
     }
-    
+
     return maxGuesses;
 }
 
